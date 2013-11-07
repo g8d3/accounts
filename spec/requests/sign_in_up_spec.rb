@@ -16,14 +16,16 @@ describe 'sign up/in requests' do
   it 'allows user to sign up and sign in sending JSON data' do
     post users_path(:json), valid_user
 
-    user_attrs = JSON.parse response.body
+    parsed_response = JSON.parse response.body
+
+    parsed_response.should have_key 'user'
 
     %w(id name email).each do |attr|
-      user_attrs.should have_key attr
-      user_attrs[attr].should == User.last.send(attr)
+      parsed_response['user'].should have_key attr
+      parsed_response['user'][attr].should == User.last.send(attr)
     end
 
-    user_attrs.should have_key "authentication_token"
+    parsed_response.should have_key "authentication_token"
 
     response.status.should == 201
   end
