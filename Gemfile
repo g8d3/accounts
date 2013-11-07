@@ -33,6 +33,7 @@ group :doc do
 end
 
 group :test do
+  gem 'shoulda-matchers'
   gem 'rspec-rails'
   gem 'capybara-webkit'
   gem 'launchy'
