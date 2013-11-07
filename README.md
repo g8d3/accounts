@@ -30,3 +30,6 @@ You will get a response like this:
 
 Of course, an user will be saved with this data.
 
+# Specs
+
+Run tests with `rspec .`.
