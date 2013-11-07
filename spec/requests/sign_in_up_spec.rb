@@ -25,7 +25,7 @@ describe 'sign up/in requests' do
       parsed_response['user'][attr].should == User.last.send(attr)
     end
 
-    parsed_response.should have_key "authentication_token"
+    parsed_response['user'].should have_key "authentication_token"
 
     response.status.should == 201
   end
